@@ -1,0 +1,71 @@
+/* Permite que el navegador sepa que hay claro/oscuro */
+:root { color-scheme: light dark; }
+
+/* Variables por defecto (modo claro) */
+:root {
+  --card-bg: #f4f4f4;
+  --card-fg: #111;
+  --muted-fg: #666;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* Preferencia del SO: modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: #1f1f1f;
+    --card-fg: #f6f6f6;
+    --muted-fg: #cfcfcf;
+    --shadow: 0 8px 24px rgba(0,0,0,.4);
+  }
+}
+
+/* (Opcional) Forzar tema por data-attribute en el contenedor raíz */
+[data-theme="light"] {
+  --card-bg: #f4f4f4;
+  --card-fg: #111;
+  --muted-fg: #666;
+  --shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+[data-theme="dark"] {
+  --card-bg: #1f1f1f;
+  --card-fg: #f6f6f6;
+  --muted-fg: #cfcfcf;
+  --shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+
+/* Estilos del componente */
+.holiday-card {
+  background: var(--card-bg);
+  color: var(--card-fg);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.holiday-title {
+  margin: 0 0 .4rem;
+  font-weight: 800;
+}
+
+.holiday-subtitle {
+  margin: 0 0 .4rem;
+  color: var(--muted-fg);
+}
+
+.holiday-date {
+  margin: .2rem 0 1rem;
+  opacity: .9;
+}
+
+.holiday-count {
+  margin: 0;
+  font-weight: 800;
+}
+
+.holiday-empty {
+  text-align: center;
+  opacity: .8;
+}
