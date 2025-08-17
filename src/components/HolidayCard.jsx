@@ -1,4 +1,3 @@
-// src/components/HolidayCard.jsx
 import "../styles/HolidayCard.css";
 
 export default function HolidayCard({ holiday }) {
