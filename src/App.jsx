@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getNextHoliday } from "./api";
 import HolidayCard from "./components/HolidayCard";
 import HolidayCardMobile from "./components/HolidayCardMobile";
-import { getCountryData } from "country-flag-emoji";
 import "./styles/App.css";
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
   const [country, setCountry] = useState({ 
     code: 'CL', 
     name: 'Chile', 
-    emoji: '🇨🇱' 
   });
 
   useEffect(() => {
@@ -27,11 +25,7 @@ function App() {
           countryData = { 
             code: 'CL', 
             name: 'Chile', 
-            emoji: '🇨🇱' 
           };
-        } else if (!countryData.emoji) {
-          // Asegurarse de que siempre haya un emoji
-          countryData.emoji = '🇨🇱';
         }
         setCountry(countryData);
         return countryCode;
