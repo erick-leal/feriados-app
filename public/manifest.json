@@ -2,18 +2,20 @@
   "name": "Feriados Chile",
   "short_name": "Feriados CL",
   "description": "Aplicación para ver los próximos feriados en Chile",
-  "start_url": "/feriados-app/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "icon-192x192.png",
+      "src": "pwa-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "icon-512x512.png",
+      "src": "pwa-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
