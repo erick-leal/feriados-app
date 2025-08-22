@@ -83,7 +83,6 @@ body {
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
   margin-top: 0.5rem;
-  border: 1px solid rgba(74, 108, 247, 0.2);
 }
 
 .country-flag {
@@ -91,7 +90,6 @@ body {
   height: 20px;
   border-radius: 3px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .country-name {
