@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getNextHoliday } from "./api";
-import HolidayCard from "./components/HolidayCard";
+import HolidayCardDesktop from "./components/HolidayCardDesktop";
 import HolidayCardMobile from "./components/HolidayCardMobile";
+import CountryHeader from "./components/CountryHeader";
 import "./styles/App.css";
 
 function App() {
@@ -61,34 +62,12 @@ function App() {
       return <p className="error-message">{error}</p>;
     }
     
-    const countryTitle = (
-      <div className="country-header">
-        <h1>Próximo feriado en {country.name}</h1>
-      </div>
-    );
-
     if (isMobile) {
       const currentCountry = country || { name: 'Chile', code: 'CL' };
-      const flagUrl = `https://flagcdn.com/48x36/${currentCountry.code.toLowerCase()}.png`;
       
       return (
         <>
-          <div className="country-header">
-            <h1>
-              <div>Próximo feriado en:</div>
-              <div className="country-flag-container">
-                <span className="country-name">{currentCountry.name}</span>
-                <img 
-                  src={flagUrl}
-                  alt={`Bandera de ${currentCountry.name}`}
-                  className="country-flag"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-            </h1>
-          </div>
+          <CountryHeader country={currentCountry} />
           <HolidayCardMobile 
             holiday={holiday} 
             country={currentCountry} 
@@ -96,11 +75,11 @@ function App() {
         </>
       );
     }
-    
+
     return (
       <div className="desktop-container">
-        {countryTitle}
-        <HolidayCard holiday={holiday} country={country} />
+        <CountryHeader country={country} />
+        <HolidayCardDesktop holiday={holiday} country={country} />
       </div>
     );
   };

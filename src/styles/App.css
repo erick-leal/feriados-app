@@ -1,9 +1,13 @@
 :root {
-  --primary-color: #3a7bd5;
+  --primary-color: #4a6cf7;
   --error-color: #ff4444;
   --transition: all 0.3s ease;
-  --background-color: #ffffff;
+  --background-color: #f5f7fa;
   --card-bg: #ffffff;
+  --text-color: #2c3e50;
+  --text-secondary: #6c757d;
+  --border-radius: 20px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -14,87 +18,127 @@
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--background-color);
+  color: var(--text-color);
   line-height: 1.6;
-  display: block;
-  width: 100%;
   min-height: 100vh;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .app {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: auto;
+  box-sizing: border-box;
+}
+
+.desktop-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  text-align: center;
-  width: 100%;
-  min-height: 100vh;
-  margin: 0 auto;
-  box-sizing: border-box;
+  flex: 1;
+  padding: 2rem 0;
 }
 
 .country-header {
   width: 100%;
-  margin: 0 0 1rem 0;
-  display: flex;
-  justify-content: center;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 0 1rem;
 }
 
 .country-header h1 {
   font-size: 1.8rem;
-  color: #333333;
-  margin: 0 0 1.5rem 0;
-  padding: 0;
-  text-align: center;
-  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .country-flag-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 0.8rem;
+  background: rgba(74, 108, 247, 0.1);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
   margin-top: 0.5rem;
+  border: 1px solid rgba(74, 108, 247, 0.2);
 }
 
 .country-flag {
-  width: 24px;
-  height: 18px;
-  vertical-align: middle;
-  border: none;
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .country-name {
-  font-weight: 500;
-}
-
-/* Estilos para escritorio */
-.desktop-container {
-  max-width: 800px;
-  width: 100%;
-  padding: 2rem;
-  background: var(--card-bg, white);
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-desktop-container h1 {
+  font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.1em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .country-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .country-flag-container {
+    padding: 0.5rem 1rem;
+  }
+  
+  .country-flag {
+    width: 24px;
+    height: 18px;
+  }
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background-color: #1a1a2e;
+  --card-bg: #16213e;
+  --text-color: #f8f9fa;
+  --text-secondary: #a8b2d1;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+  
+  .country-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .country-flag-container {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* Mensajes de error */

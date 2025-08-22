@@ -1,0 +1,9 @@
+{
+  "appId": "com.ticktockferiados",
+  "appName": "TickTockFeriados",
+  "webDir": "dist",
+  "server": {
+    "url": "https://www.ticktockferiados.cl/",
+    "cleartext": false
+  }
+}
