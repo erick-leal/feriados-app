@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { getNextHoliday } from "./api";
 import HolidayCardDesktop from "./components/HolidayCardDesktop";
 import HolidayCardMobile from "./components/HolidayCardMobile";
@@ -94,18 +93,45 @@ function App() {
     ? `El próximo feriado en ${country.name} es ${holiday.name} el ${new Date(holiday.date).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`
     : `Consulta los próximos feriados en ${country.name}. Calendario completo de días festivos con fechas exactas y días de la semana.`;
 
+    // Update document title and meta tags
+  useEffect(() => {
+    document.title = pageTitle;
+    
+    // Update or create meta description
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement('meta');
+      metaDescription.name = 'description';
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.content = pageDescription;
+    
+    // Update or create og:title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.content = pageTitle;
+    
+    // Update or create og:description
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    ogDesc.content = pageDescription;
+    
+    // Cleanup function to reset title on unmount
+    return () => {
+      document.title = 'Feriados en Chile 2024-2025 | Próximos Días Feriados';
+    };
+  }, [pageTitle, pageDescription]);
+
     return (
       <div className="desktop-container">
-        <Helmet>
-          <title>{pageTitle}</title>
-          <meta name="description" content={pageDescription} />
-          <meta property="og:title" content={pageTitle} />
-          <meta property="og:description" content={pageDescription} />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={pageTitle} />
-          <meta name="twitter:description" content={pageDescription} />
-        </Helmet>
         <StructuredData />
         <CountryHeader country={country} />
         <HolidayCardDesktop holiday={holiday} />
