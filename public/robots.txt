@@ -1,4 +1,12 @@
+# robots.txt para ticktockferiados.cl
 User-agent: *
 Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
 
+# Frecuencia de rastreo
+Crawl-delay: 10
+
+# Sitemaps
 Sitemap: https://ticktockferiados.cl/sitemap.xml
