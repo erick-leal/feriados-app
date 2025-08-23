@@ -13,7 +13,9 @@
 .desktop-card {
   display: flex;
   width: 100%;
-  min-height: 350px;
+  min-height: 400px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .countdown-section {
@@ -129,6 +131,11 @@
   background: var(--card-bg);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  min-height: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  width: 50%;
+  height: auto;
 }
 
 .holiday-info .holiday-header {
@@ -193,7 +200,6 @@
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .desktop-card {
-    flex-direction: column;
     min-height: auto;
   }
   
