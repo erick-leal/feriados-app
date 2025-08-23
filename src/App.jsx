@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { getNextHoliday } from "./api";
 import HolidayCardDesktop from "./components/HolidayCardDesktop";
 import HolidayCardMobile from "./components/HolidayCardMobile";
 import CountryHeader from "./components/CountryHeader";
+import StructuredData from "./components/StructuredData";
 import "./styles/App.css";
 
 function App() {
@@ -84,8 +86,27 @@ function App() {
       );
     }
 
+    const pageTitle = holiday 
+    ? `Próximo feriado en ${country.name}: ${holiday.name} - ${new Date(holiday.date).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`
+    : `Próximos feriados en ${country.name} | Calendario 2024-2025`;
+
+  const pageDescription = holiday
+    ? `El próximo feriado en ${country.name} es ${holiday.name} el ${new Date(holiday.date).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`
+    : `Consulta los próximos feriados en ${country.name}. Calendario completo de días festivos con fechas exactas y días de la semana.`;
+
     return (
       <div className="desktop-container">
+        <Helmet>
+          <title>{pageTitle}</title>
+          <meta name="description" content={pageDescription} />
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+        </Helmet>
+        <StructuredData />
         <CountryHeader country={country} />
         <HolidayCardDesktop holiday={holiday} />
       </div>
