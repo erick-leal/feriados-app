@@ -10,7 +10,7 @@
   --text-secondary: #a8b2d1;
 }
 
-.card-content {
+.desktop-card {
   display: flex;
   width: 100%;
   min-height: 350px;
@@ -119,7 +119,7 @@
   text-align: center;
 }
 
-.holiday-info {
+.desktop-card .holiday-info {
   flex: 1;
   padding: 3rem 2.5rem;
   display: flex;
@@ -192,7 +192,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
-  .card-content {
+  .desktop-card {
     flex-direction: column;
     min-height: auto;
   }

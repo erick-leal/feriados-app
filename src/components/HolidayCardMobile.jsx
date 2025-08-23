@@ -86,7 +86,6 @@ export default function HolidayCardMobile({ holiday, country }) {
           </div>
         </div>
       </div>
-
       <div className="holiday-info">
         <p className="holiday-name">{holiday.localName}</p>
         <p className="holiday-date">
@@ -97,16 +96,6 @@ export default function HolidayCardMobile({ holiday, country }) {
             day: 'numeric'
           })}
         </p>
-      </div>
-      
-      <div className="progress-bar">
-        <div 
-          className="progress" 
-          style={{ 
-            width: `${Math.min(100, (1 - (timeLeft.days / 30)) * 100)}%`,
-            backgroundColor: getProgressColor()
-          }}
-        />
       </div>
     </div>
   );

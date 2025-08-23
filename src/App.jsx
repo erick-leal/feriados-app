@@ -79,7 +79,7 @@ function App() {
     return (
       <div className="desktop-container">
         <CountryHeader country={country} />
-        <HolidayCardDesktop holiday={holiday} country={country} />
+        <HolidayCardDesktop holiday={holiday} />
       </div>
     );
   };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../styles/HolidayCardDesktop.css';
 
-export default function HolidayCardDesktop({ holiday, country }) {
+export default function HolidayCardDesktop({ holiday }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
@@ -45,17 +45,9 @@ export default function HolidayCardDesktop({ holiday, country }) {
       </div>
     );
   }
-  
-  const countryData = country || { 
-    name: 'Chile', 
-    code: 'CL'
-  };
-  
-  const flagUrl = `https://flagcdn.com/64x48/${countryData.code.toLowerCase()}.png`;
-  
+    
   return (
     <div className="desktop-card" style={{ '--progress-color': getProgressColor() }}>
-      <div className="card-content">
         <div className="countdown-section">
           <div className="countdown-wrapper">
             <h2>Faltan:</h2>
@@ -82,7 +74,6 @@ export default function HolidayCardDesktop({ holiday, country }) {
             </div>
           </div>
         </div>
-
         <div className="holiday-info">
           <div className="holiday-content">
             <h1 className="holiday-name">{holiday.localName}</h1>
@@ -97,6 +88,5 @@ export default function HolidayCardDesktop({ holiday, country }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
