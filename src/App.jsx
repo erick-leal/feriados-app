@@ -15,6 +15,10 @@ function App() {
   });
 
   useEffect(() => {
+    // Fecha fija para probar feriados de octubre (puedes cambiarla)
+    const testDate = new Date();
+    // const testDate = new Date('2025-10-15');
+    
     // Detectar el país del usuario
     const detectCountry = async () => {
       try {
@@ -29,17 +33,22 @@ function App() {
           };
         }
         setCountry(countryData);
-        return countryCode;
+        return { code: countryCode, name: countryData.name };
       } catch (error) {
         console.error('Error detecting country:', error);
-        return 'CL'; // Default a Chile si hay error
+        return { code: 'CL', name: 'Chile' }; // Default a Chile si hay error
       }
     };
 
     const fetchHolidays = async () => {
       try {
-        const countryCode = await detectCountry();
-        const holidayData = await getNextHoliday(countryCode);
+        const country = await detectCountry();
+        // Formateamos la fecha correctamente para la API (YYYY-MM-DD)
+        const formattedDate = testDate.toISOString().split('T')[0];
+        
+        // Pasamos la fecha formateada a getNextHoliday
+        const holidayData = await getNextHoliday(country.code, formattedDate);
+        
         setHoliday(holidayData);
       } catch (e) {
         console.error('Error:', e);
@@ -69,8 +78,7 @@ function App() {
         <>
           <CountryHeader country={currentCountry} />
           <HolidayCardMobile 
-            holiday={holiday} 
-            country={currentCountry} 
+            holiday={holiday}
           />
         </>
       );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../styles/HolidayCardMobile.css';
 
-export default function HolidayCardMobile({ holiday, country }) {
+export default function HolidayCardMobile({ holiday }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
@@ -45,15 +45,6 @@ export default function HolidayCardMobile({ holiday, country }) {
       </div>
     );
   }
-  
-  // Asegurar que siempre tengamos un objeto de país con valores por defecto
-  const countryData = country || { 
-    name: 'Chile', 
-    code: 'CL'
-  };
-  
-  // URL para la bandera del país usando el código de país en minúsculas
-  const flagUrl = `https://flagcdn.com/48x36/${countryData.code.toLowerCase()}.png`;
   
   return (
     <div className="mobile-container" style={{ '--progress-color': getProgressColor() }}>

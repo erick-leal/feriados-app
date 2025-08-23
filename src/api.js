@@ -1,4 +1,3 @@
-// src/api.js
 const API = 'https://date.nager.at/api/v3/PublicHolidays';
 
 async function fetchHolidays(year, country = 'CL') {
@@ -12,20 +11,23 @@ function parseYMD(ymd) {
   return new Date(`${ymd}T00:00:00`);
 }
 
-export async function getNextHoliday(country = 'CL') {
-  const now = new Date();
+export async function getNextHoliday(country = 'CL', dateString = null) {
+  const now = dateString ? new Date(dateString) : new Date();
   const y = now.getFullYear();
 
   const [thisYear, nextYear] = await Promise.all([
-    fetchHolidays(y, country),
-    fetchHolidays(y + 1, country),
+    fetchHolidays(y, country).catch(() => []),
+    fetchHolidays(y + 1, country).catch(() => []),
   ]);
 
   const all = [...thisYear, ...nextYear];
   const upcoming = all
-    .map(h => ({ ...h, _date: parseYMD(h.date) })) // Nager usa "date", "localName", "name", etc.
-    .filter(h => h._date >= new Date(now.toDateString())) // ignora los ya pasados (hoy cuenta)
+    .map(h => ({ ...h, _date: parseYMD(h.date) }))
+    .filter(h => h._date >= new Date(now.toDateString()))
     .sort((a, b) => a._date - b._date)[0];
 
+  console.log('Buscando feriados después de:', now.toISOString().split('T')[0]);
+  console.log('Próximo feriado encontrado:', upcoming);
+  
   return upcoming || null;
 }
