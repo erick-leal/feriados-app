@@ -18,18 +18,18 @@
   background: var(--card-bg);
   border-radius: 20px;
   box-sizing: border-box;
-  min-height: 50vh;
-  height: 50vh;
+  min-height: 400px;
+  height: 400px;
   overflow: hidden;
-  margin: 1rem auto;
+  margin: 16px auto;
 }
 
 /* Countdown section */
 .countdown-container {
   background: linear-gradient(135deg, #4a6cf7, #6c5ce7);
   width: 100%;
-  height: 50%;
-  padding: 1rem;
+  height: 200px;
+  padding: 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -43,8 +43,8 @@
 .holiday-info {
   background: var(--card-bg);
   border-bottom-right-radius: 20px;
-  padding: 1.5rem;
-  height: 50%;
+  padding: 24px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,14 +55,14 @@
 }
 
 .holiday-name {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
-  margin: 0 0 0.5rem;
+  margin: 0 0 16px;
   color: var(--text-color);
 }
 
 .holiday-date {
-  font-size: 1.1rem;
+  font-size: 18px;
   color: var(--text-color);
   opacity: 0.9;
   margin: 0;
@@ -82,11 +82,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0;
-  gap: 0.1rem;
+  margin: 8px 0;
+  gap: 2px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding: 0.5rem 0;
+  padding: 8px 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   white-space: nowrap;
