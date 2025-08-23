@@ -1,7 +1,16 @@
 {
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/sitemap.xml", "headers": { "Content-Type": "application/xml" } },
-    { "src": "/.*", "dest": "/index.html" }
+    { 
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml",
+      "headers": { 
+        "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    { 
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
